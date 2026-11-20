@@ -585,7 +585,7 @@ shot({
 });
 shot({
   id: 'y4', mood: 'march', seg: 8,
-  lines: [L('Tam o sırada savunmanın komutanı Giustiniani ağır yaralanır ve geri çekilir. Savunma çözülmeye başlar.', 'Tam o sırada savunmanın komutanı Ciustiniani ağır yaralanır ve geri çekilir. Savunma çözülmeye başlar.')],
+  lines: [L('Tam o sırada savunmanın komutanı Giustiniani ağır yaralanır ve geri çekilir. Savunma çözülmeye başlar.', 'Tam o sırada savunmanın komutanı Custinyani ağır yaralanır ve geri çekilir. Savunma çözülmeye başlar.')],
   sfx: [['arrow_hit', 2.2]],
   draw(g) {
     g.bg('walls', { time: 'dawn', close: true, defendersClose: true });
