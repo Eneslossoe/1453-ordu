@@ -17,21 +17,22 @@ import numpy as np
 from piper import PiperVoice, SynthesisConfig
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BUILD = os.path.join(ROOT, "build")
+BUILD = os.environ.get("BUILD_DIR") or os.path.join(ROOT, "build")
+VOICES = os.path.join(ROOT, "build", "voices")
 VOICE = os.environ.get("VOICE", "fahrettin")
 LENGTH_SCALE = float(os.environ.get("LENGTH_SCALE", "1.06"))
 SR_OUT = 44100
-GAP = 0.30  # aynı sahnedeki cümleler arası sessizlik
+GAP = float(os.environ.get("GAP", "0.30"))  # aynı sahnedeki cümleler arası sessizlik
 FPS = 30
 
 
 def load_voice():
-    d = os.path.join(BUILD, "voices", f"vits-piper-tr_TR-{VOICE}-medium")
+    d = os.path.join(VOICES, f"vits-piper-tr_TR-{VOICE}-medium")
     return PiperVoice.load(os.path.join(d, f"tr_TR-{VOICE}-medium.onnx"))
 
 
 def synth(voice, text):
-    cache_dir = os.path.join(BUILD, "tts_cache")
+    cache_dir = os.path.join(ROOT, "build", "tts_cache")
     os.makedirs(cache_dir, exist_ok=True)
     key = hashlib.sha1(f"{VOICE}|{LENGTH_SCALE}|{text}".encode()).hexdigest()[:16]
     path = os.path.join(cache_dir, key + ".npy")
@@ -57,7 +58,7 @@ def synth(voice, text):
     return a
 
 
-def split_sub(text, maxlen=44):
+def split_sub(text, maxlen=int(os.environ.get("SUB_MAX", "44"))):
     """Bir cümleyi ekrana sığacak altyazı parçalarına böl (her parça en fazla 2 satır)."""
     words = text.split()
     chunks, cur = [], ""

@@ -14,7 +14,7 @@ import numpy as np
 from scipy.signal import butter, lfilter, sosfilt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BUILD = os.path.join(ROOT, "build")
+BUILD = os.environ.get("BUILD_DIR") or os.path.join(ROOT, "build")
 SR = 44100
 RNG = np.random.default_rng(1453)
 
