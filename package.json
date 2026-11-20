@@ -1,0 +1,25 @@
+{
+  "name": "1453-ordu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eneslossoe/1453-ordu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eneslossoe/1453-ordu/issues"
+  },
+  "homepage": "https://github.com/Eneslossoe/1453-ordu#readme",
+  "dependencies": {
+    "@expo-google-fonts/cinzel": "^0.4.2",
+    "@expo-google-fonts/nunito": "^0.4.2",
+    "@napi-rs/canvas": "^1.1.1"
+  }
+}
